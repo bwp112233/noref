@@ -24,20 +24,15 @@ class History extends React.Component {
     loadHistory = async () => {
 
         let history = await getStorage('clip');
-        history = history.clip.reverse()
-        this.setState({ previousClip: history })
+        history = history.clip.reverse();
+        this.setState({ previousClip: history });
 
     }
 
     deleteEntry = async (e) => {
-        // let ev = {}
-        // let ev1 = Object.assign(ev, e);
-        // console.log(ev1.target.closest('#historyText').children[0].innerText);
-
 
         await deleteHistoryItem(e.target.closest('#historyText').children[0].innerText);
-        const history = await getStorage('clip');
-        this.setState({ previousClip: history.clip })
+        this.loadHistory();
 
     }
 

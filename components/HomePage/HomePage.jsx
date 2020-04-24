@@ -27,12 +27,11 @@ class HomePage extends Component {
 
     homeClass = ['home'];
 
-    loadKeys = () => {
+    loadKeys = (e) => {
 
         getStorage('keyCommand').then(result =>
             this.setState({ currentKey: result.keyCommand }))
         getStorage('fullCommand').then(result => {
-            console.log(result);
 
             this.setState({ fullURL: result.fullCommand })
         })

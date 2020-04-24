@@ -96,7 +96,7 @@ class ConfigPage extends Component {
                     <p className='currentKey'><strong>Full URL:</strong> {this.props.fullURL ? this.props.fullURL.join(' + ') : 'Not Set'}</p>
                 </div>
                 <MenuItem>
-                    <Input onKeyUp={this.keyRemove} onKeyDown={this.keyListen} value={this.state.keyMacro ? this.state.keyMacro.join(' + ') : 'Click here to set key macro'} />
+                    <Input onKeyUp={this.keyRemove} onKeyDown={this.keyListen} value={this.state.keyMacro ? this.state.keyMacro.join(' + ') : 'Click here to set hotkey(s)'} />
                 </MenuItem>
                 <div className="buttonBox">
                     <Button type={'full'} mouseUp={this.mouseUp} action={this.submitKey} text={'Set NoRef key'} />

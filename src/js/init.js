@@ -31,20 +31,4 @@ const init = async () => {
             document.getElementById('input').value = customKey.join(' + ');
         }
     });
-
-    // document.getElementById('setKey').addEventListener('click', setKey);
-
-    // let storedKey = await getStorage('keyCommand');
-    // console.log(storedKey.keyCommand);
-
-    // document.getElementById('currentKey').innerText = `Current Hotkey: ${storedKey.keyCommand.join(' + ')}`;
-    // document.getElementById('prevClips').addEventListener('click', async () => {
-    //     const prev = await getStorage('clip');
-    //     console.log(prev);
-
-    //     prev.clip.map((e) => {
-    //         document.getElementById('previousClips').insertAdjacentHTML('beforeend', `<p>${e}</p>`);
-    //     });
-    // })
-
 }

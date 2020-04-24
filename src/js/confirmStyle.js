@@ -11,7 +11,7 @@ const confirmStyle = `
     font-family: sans-serif;
     line-height: 2;
     transform: translateX(-50%) translateY(-50%);
-    z-index: 1001;
+    z-index: 9999;
   `;
 
 export default confirmStyle;
