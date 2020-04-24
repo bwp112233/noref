@@ -1,0 +1,26 @@
+.menuItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 10px 10px;
+    border-bottom: 1px solid rgb(189, 189, 189);
+}
+
+.menuText {
+    display: block;
+    font-weight: 100;
+    font-size: 0.95rem;
+    padding: 5px 5px;
+    color: rgb(59, 59, 59);
+
+}
+
+.menuItem:hover {
+    cursor: pointer;
+    background-color: rgb(230, 230, 230);
+}
+
+.menuItem:last-child {
+    border-bottom: none;
+}

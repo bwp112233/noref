@@ -1,0 +1,16 @@
+.noRefHeader {
+    background-color: rgba(0, 126, 78, 0.986);
+    min-width: 100%;
+    padding: 10px 10px;
+    vertical-align: middle;
+    position: sticky;
+    top: 0;
+}
+
+.headerText {
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: white;
+    padding: 5px 5px;
+}

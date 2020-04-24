@@ -1,0 +1,80 @@
+.historyPage {
+    position: fixed;
+    background-color: white;
+    width: 300px;
+    height: 300px;
+    z-index: 100;
+    transition: transform 0.3s ease-out;
+    overflow: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+
+}
+
+.historyText {
+    font-size: 10px;
+    font-weight: 200;
+    text-align: left;
+}
+
+a, a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+.open {
+    transform: translateX(0);
+}
+
+.close {
+    transform: translateX(100%);
+}
+
+.historyEntry {
+    min-width: 80vw;
+}
+
+.historyWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    padding: 10px 10px;
+    border-bottom: 1px solid rgb(189, 189, 189);
+    cursor: pointer;
+}
+
+.historyWrapper:last-child {
+    border-bottom: none;
+}
+
+.icons {
+    display: flex;
+    opacity: 0;
+    font-size: 18px;
+    transition: opacity 0.3s;
+    z-index: 10;
+}
+
+.far {
+    margin: 0 3px;
+    color: rgb(0, 126, 78);
+}
+
+.far:active {
+    transform: translateY(3px);
+}
+
+.historyWrapper:hover {
+    background-color: rgb(230, 230, 230);
+}
+
+.historyWrapper:hover .icons {
+    opacity: 1;
+
+}
+
+textarea {
+    position: absolute;
+    z-index: -100;
+}
+

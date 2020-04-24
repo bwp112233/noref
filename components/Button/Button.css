@@ -1,0 +1,27 @@
+.button {
+    background-color:rgba(0, 126, 78, 0.986);
+    color: white;
+    display: inline-block;
+      padding: 7px 12px;
+    border-radius: 10px;
+    transition: transform 0.05s ease-out;
+    font-weight: 200;
+    font-size: 13px;
+    box-shadow: 2px 2px 5px grey;
+}
+
+.button:hover {
+    background-color:rgba(1, 105, 65, 0.986);
+    cursor: pointer;
+ }
+
+.button:active {
+    transform: translateY(2px) scale(.97);
+    box-shadow: 1px 1px 5px grey;
+   
+}
+
+.buttonActive {
+    transform: translateY(2px) scale(.97);
+    box-shadow: 1px 1px 5px grey;
+}
