@@ -4,8 +4,10 @@ import Header from '../Header/Header';
 import { getStorage, deleteHistoryItem } from '../../src/js/storage';
 import './History.css';
 import HistoryItem from './HistoryItem';
+import ClearAllButton from '../Button/ClearAllButton';
 import fadeOut from '../../src/js/fadeEffect';
 import confirmStyle from '../../src/js/confirmStyle';
+import ClearAll from '../Button/ClearAllButton';
 
 
 class History extends React.Component {
@@ -27,6 +29,13 @@ class History extends React.Component {
         history = history.clip.reverse();
         this.setState({ previousClip: history });
 
+    }
+
+    clearAll = async () => {
+        console.log('here');
+
+        await deleteHistoryItem('all');
+        this.loadHistory();
     }
 
     deleteEntry = async (e) => {
@@ -76,7 +85,9 @@ class History extends React.Component {
             <div className={this.state.active ? "historyPage open" : "historyPage close"}>
 
                 <Header toggle={this.toggleHistory}
-                    title={<p className="back">Back</p>} />
+                    title={<p className="back">Back</p>}>
+                    <ClearAll onClick={this.clearAll} />
+                </Header>
 
                 <div className="historyText">
                     {history}

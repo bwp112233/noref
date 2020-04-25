@@ -16,12 +16,16 @@ const getStorage = (type) => {
 
 const deleteHistoryItem = (item) => {
 
-    getStorage('clip').then((clips) => {
-        const history = [...clips.clip]
-        history.splice(history.indexOf(item), 1);
-        return browser.storage.local.set({ clip: history });
-    })
+    if (item === 'all') {
+        return browser.storage.local.set({ clip: [] });
+    } else {
 
+        getStorage('clip').then((clips) => {
+            const history = [...clips.clip]
+            history.splice(history.indexOf(item), 1);
+            return browser.storage.local.set({ clip: history });
+        })
+    }
     return getStorage('clip');
 }
 

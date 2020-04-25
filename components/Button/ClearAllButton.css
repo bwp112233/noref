@@ -1,0 +1,27 @@
+.clearAll {
+    background-color: white;
+    color: rgba(0, 126, 78, 0.986);
+    display: inline-block;
+      padding: 7px 12px;
+    border-radius: 10px;
+    transition: transform 0.05s ease-out;
+    font-weight: 200;
+    font-size: 13px;
+    box-shadow: 3px 3px 5px rgb(0, 75, 37);
+}
+
+.clearAll:hover {
+    background-color: rgb(201, 201, 201);
+    cursor: pointer;
+ }
+
+.clearAll:active {
+    transform: translateY(2px) scale(.97);
+    box-shadow: 1px 1px 5px rgb(0, 75, 37);
+   
+}
+
+.buttonActive {
+    transform: translateY(2px) scale(.97);
+    box-shadow: 1px 1px 5px rgb(0, 75, 37);
+}
