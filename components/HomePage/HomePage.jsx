@@ -17,7 +17,9 @@ class HomePage extends Component {
             showHistory: false,
             shoutAbout: false,
             currentKey: [],
-            fullURL: []
+            fullURL: [],
+            noRefCodes: [],
+            fullUrlCodes: []
         }
         this.toggleConfig = React.createRef();
         this.toggleHistory = React.createRef();
@@ -27,14 +29,19 @@ class HomePage extends Component {
 
     homeClass = ['home'];
 
-    loadKeys = (e) => {
+    loadKeys = () => {
 
         getStorage('keyCommand').then(result =>
-            this.setState({ currentKey: result.keyCommand }))
+            this.setState({ currentKey: result.keyCommand }));
         getStorage('fullCommand').then(result => {
-
-            this.setState({ fullURL: result.fullCommand })
-        })
+            this.setState({ fullURL: result.fullCommand });
+        });
+        getStorage('fullCodes').then(result => {
+            this.setState({ fullUrlCodes: result.fullCodes });
+        });
+        getStorage('keyCodes').then(result => {
+            this.setState({ noRefCodes: result.keyCodes });
+        });
     }
 
 
@@ -47,6 +54,14 @@ class HomePage extends Component {
 
     checkSize = () => {
         if (!this.state.showHistory) {
+            this.homeClass = ['home', 'bigger'];
+        } else {
+            this.homeClass = ['home'];
+        }
+    }
+
+    checkAboutSize = () => {
+        if (!this.state.showAbout) {
             this.homeClass = ['home', 'bigger'];
         } else {
             this.homeClass = ['home'];
@@ -74,6 +89,13 @@ class HomePage extends Component {
         this.checkSize();
     }
 
+    aboutToggle = () => {
+        const currentState = this.state.showAbout;
+        this.setState({ showHistory: !currentState });
+        this.checkAboutSize();
+    }
+
+
     componentDidMount() {
         this.loadKeys();
     }
@@ -85,12 +107,15 @@ class HomePage extends Component {
                 <ConfigPage ref={this.toggleConfig}
                     loadKeys={this.loadKeys}
                     fullURL={this.state.fullURL}
-                    currentKey={this.state.currentKey} />
+                    currentKey={this.state.currentKey}
+                    fullUrlCodes={this.state.fullUrlCodes}
+                    noRefCodes={this.state.noRefCodes} />
 
                 <History ref={this.toggleHistory}
                     testToggle={this.testToggle} />
 
-                <About ref={this.toggleAbout} />
+                <About ref={this.toggleAbout}
+                    back={this.aboutToggle} />
 
                 <Header title={'NoRef'} />
 

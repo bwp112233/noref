@@ -52,12 +52,14 @@ a, a:visited {
     opacity: 0;
     font-size: 18px;
     transition: opacity 0.3s;
-    z-index: 10;
 }
 
 .far {
-    margin: 0 3px;
     color: rgb(0, 126, 78);
+}
+
+.far:last-child {
+    margin-left: 6px;
 }
 
 .far:active {
@@ -74,7 +76,21 @@ a, a:visited {
 }
 
 textarea {
+
     position: absolute;
+    left: 500%;
     z-index: -100;
 }
 
+.empty {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.fa-broom {
+    display: block;
+    font-size: 40px;
+    color: rgb(0, 126, 78);
+}

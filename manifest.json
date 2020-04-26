@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "NoRef",
-    "version": "1.1",
+    "version": "1.35",
     "description": "Copies URL without referral data.",
     "icons": {
         "48": "./border-48.png"

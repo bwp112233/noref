@@ -52,16 +52,37 @@ class ConfigPage extends Component {
     }
 
     submitKey = (e) => {
+
         if (e.type === 'contextmenu') {
             e.preventDefault();
             const button = e.target.closest('#button');
             button.classList.add('buttonActive');
         }
 
+        if (this.props.fullUrlCodes && keyCodes.length > 0) {
+
+            if (this.props.fullUrlCodes.sort().toString() === keyCodes.sort().toString() || this.props.noRefCodes.sort().toString() === keyCodes.sort().toString()) {
+                keyList = [];
+                keyCodes = [];
+                this.setState({
+                    keyMacro: ['Key already exists! Try again!'],
+                    keyCode: null
+                });
+                this.props.loadKeys();
+                return;
+            }
+
+        }
+
+
         this.setState({
             keyMacro: null,
             keyCode: null
         });
+
+        if (keyList.length === 0) {
+            keyList = ['Not Set'];
+        }
 
         let type = (e.target.closest('#button').innerText === 'Set NoRef key') ? 'keyCommand' : 'fullCommand';
         let codes = (e.target.closest('#button').innerText === 'Set NoRef key') ? 'keyCodes' : 'fullCodes';
@@ -71,6 +92,7 @@ class ConfigPage extends Component {
         keyCodes = [];
 
         this.props.loadKeys();
+
     }
 
     mouseUp = (e) => {
@@ -96,13 +118,19 @@ class ConfigPage extends Component {
                     <p className='currentKey'><strong>Full URL:</strong> {this.props.fullURL ? this.props.fullURL.join(' + ') : 'Not Set'}</p>
                 </div>
                 <MenuItem>
-                    <Input onKeyUp={this.keyRemove} onKeyDown={this.keyListen} value={this.state.keyMacro ? this.state.keyMacro.join(' + ') : 'Click here to set hotkey(s)'} />
+                    <Input onKeyUp={this.keyRemove}
+                        onKeyDown={this.keyListen}
+                        value={this.state.keyMacro ? this.state.keyMacro.join(' + ') : 'Click here to set hotkey(s)'} />
                 </MenuItem>
-                <div className="buttonBox">
-                    <Button type={'full'} mouseUp={this.mouseUp} action={this.submitKey} text={'Set NoRef key'} />
-                    <Button type={'noRef'} mouseUp={this.mouseUp} action={this.submitKey} text={'Set full URL key'} />
-                </div>
 
+                <div className="buttonBox">
+                    <Button type={'full'}
+                        mouseUp={this.mouseUp}
+                        action={this.submitKey} text={'Set NoRef key'} />
+                    <Button type={'noRef'}
+                        mouseUp={this.mouseUp}
+                        action={this.submitKey} text={'Set full URL key'} />
+                </div>
 
             </div >
         )

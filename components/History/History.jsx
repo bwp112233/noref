@@ -4,7 +4,6 @@ import Header from '../Header/Header';
 import { getStorage, deleteHistoryItem } from '../../src/js/storage';
 import './History.css';
 import HistoryItem from './HistoryItem';
-import ClearAllButton from '../Button/ClearAllButton';
 import fadeOut from '../../src/js/fadeEffect';
 import confirmStyle from '../../src/js/confirmStyle';
 import ClearAll from '../Button/ClearAllButton';
@@ -16,7 +15,6 @@ class History extends React.Component {
         previousClip: []
     }
 
-
     toggleHistory = () => {
         const current = this.state.active;
         this.setState({ active: !current });
@@ -26,14 +24,14 @@ class History extends React.Component {
     loadHistory = async () => {
 
         let history = await getStorage('clip');
+
         history = history.clip.reverse();
+
         this.setState({ previousClip: history });
 
     }
 
     clearAll = async () => {
-        console.log('here');
-
         await deleteHistoryItem('all');
         this.loadHistory();
     }
@@ -62,14 +60,13 @@ class History extends React.Component {
 
     render() {
         let history;
-        if (this.state.active) {
 
-        }
 
         if (this.state.previousClip === undefined || this.state.previousClip.length === 0) {
-            history = (<MenuItem innerText='Empty!' />)
+            history = (<div className='empty'><i class="fas fa-broom"></i></div>)
 
         } else {
+
 
             history = this.state.previousClip.map((clip, i) => {
                 return <HistoryItem
@@ -86,7 +83,7 @@ class History extends React.Component {
 
                 <Header toggle={this.toggleHistory}
                     title={<p className="back">Back</p>}>
-                    <ClearAll onClick={this.clearAll} />
+                    {this.state.previousClip.length > 0 ? <ClearAll onClick={this.clearAll} /> : null}
                 </Header>
 
                 <div className="historyText">

@@ -31,7 +31,6 @@ const deleteHistoryItem = (item) => {
 
 const setClip = (clip) => {
 
-
     getStorage('clip').then((clips) => {
         if (Object.keys(clips).length === 0) {
             const array = [];
